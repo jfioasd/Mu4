@@ -85,7 +85,7 @@ def parse(tok):
             L.append(compose(parse(T[:-1])))
             idx -= 1
 
-        elif i == '#':
+        elif i == '!':
             t = parse(tok[idx+1:])
             if len(t) == 2:
                 L.append(p_rec(t))
