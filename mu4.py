@@ -1,3 +1,5 @@
+import sys
+
 def proj(x):
     return lambda a: a[x-1]
 
@@ -16,6 +18,7 @@ def p_rec(fns):
     def x(args):
         t = g(args[1:])
         for i in range(args[0]):
+            print([i, t] + args)
             t = h([i, t] + args)
         return t
     return x
@@ -52,19 +55,11 @@ def lex(prog):
     return L
 
 def parse(tok):
-    if tok[0] == '#':
-        x = parse(tok[1:])
-        if len(x) == 2:
-            return p_rec(x)
-        else:
-            return mu(x)
-
     L = []
 
     x = 0
     while x < len(tok):
         i = tok[x]
-
         if isinstance(i, int):
             if x+1 < len(tok) and tok[x+1] == ';':
                 L.append(proj(i))
@@ -76,21 +71,28 @@ def parse(tok):
             L.append(succ())
 
         elif i == '(':
+            L.append('(')
+        
+        elif i == ')':
             lvl = 1
             T = []
-            x += 1
-            while x < len(tok) and lvl > 0:
-                T.append(tok[x])
-                lvl += tok[x] == '('
-                lvl -= tok[x] == ')'
-                x += 1
-            L.append(compose(parse(T[:-1])))
-            x -= 1
+            while lvl > 0:
+                tmp = L.pop()
+                T = [tmp] + T
+                lvl += tmp == ')'
+                lvl -= tmp == '('
+            L.append(compose(T[1:]))
+
+        elif i == '#':
+            if len(L) >= 2 and '(' not in L[-2:]:
+                L.append(p_rec([L.pop(-2), L.pop()]))
+            else:
+                L.append(mu([L.pop()]))
         x += 1
 
     return L
-    
-while True:
-    x = input("> ")
-    L = eval(input())
-    print(parse(lex(x))(L))
+
+if __name__ == '__main__':
+    f = open(sys.argv[1]).read()
+    x = eval(input())
+    print(parse(lex(f))[0](x))
