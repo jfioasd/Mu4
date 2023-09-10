@@ -1,7 +1,9 @@
 # Mu4
 A language based on [μ6](https://github.com/bforte/mu6/)
 
-Takes a line from STDIN as the argument to the function. Prints the resulting value of the function.
+On execution, the program takes a line from STDIN as the argument to the function.
+
+After calling, it prints the resulting value of the function.
 
 Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 
