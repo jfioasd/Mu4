@@ -1,5 +1,5 @@
 # μ4
-A language based on [μ6](https://github.com/bforte/mu6/)
+A esolang based on [μ6](https://github.com/bforte/mu6/)
 
 The program takes a list from STDIN as the argument(s) to the function.
 
