@@ -15,7 +15,7 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 * `;` Successor. Takes any number of arguments, and returns the successor of its first argument.
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
-* `( .. h2 h1 g )` Composition. Returns a function:
+* `( h1 h2 .. hn g )` Composition. Returns a function:
   * Takes any number of arguments `a1 a2 .. an`.
   * Returns `g(h1([a1, a2, ... an]), h2([a1, a2, ... an]), ... hn([a1, a2, ... an]))`. 
 * `# g h` Primitive recursion. Takes
