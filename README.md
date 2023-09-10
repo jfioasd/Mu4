@@ -33,7 +33,7 @@ P.S. The current implementation for `#` is postfix because I'm figuring out how 
 ## Examples
 ### Multiplication
 ```
-0(2;3;1;(2;;)#)#
+#0(2;3;#1;(2;;))
 ```
 
 Basically:
