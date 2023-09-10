@@ -38,3 +38,13 @@ P.S. The current implementation for `#` is postfix because I'm figuring out how 
 
 Basically:
 `p_rec(0, compose(proj(2), proj(3), p_rec(proj(1), compose(proj(2), succ))))`
+
+### Predecessor
+```
+#(0)1;
+```
+
+### Minimization test
+```
+#(2;#(0)1;)
+```
