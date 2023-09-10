@@ -27,3 +27,14 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
 * `# f` Minimization.
   * Takes any number of arguments `a1 a2 .. an`.
   * Return the smallest natural number `x` where `f([x, a1, a2, .. an]) = 0`.
+
+P.S. The current implementation for `#` is postfix because I'm figuring out how to do it properly.
+
+## Examples
+### Multiplication
+```
+0(2;3;1;(2;;)#)#
+```
+
+Basically:
+`p_rec(0, compose(proj(2), proj(3), p_rec(proj(1), compose(proj(2), succ))))`
