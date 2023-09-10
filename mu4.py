@@ -18,8 +18,8 @@ def p_rec(fns):
     def x(args):
         t = g(args[1:])
         for i in range(args[0]):
-            print([i, t] + args)
-            t = h([i, t] + args)
+            t = h([i, t] + args[1:])
+
         return t
     return x
 
