@@ -57,13 +57,13 @@ def lex(prog):
 def parse(tok):
     L = []
 
-    x = 0
-    while x < len(tok):
-        i = tok[x]
+    idx = 0
+    while idx < len(tok):
+        i = tok[idx]
         if isinstance(i, int):
-            if x+1 < len(tok) and tok[x+1] == ';':
+            if idx+1 < len(tok) and tok[idx+1] == ';':
                 L.append(proj(i))
-                x += 1
+                idx += 1
             else:
                 L.append(const(i))
 
@@ -71,24 +71,28 @@ def parse(tok):
             L.append(succ())
 
         elif i == '(':
-            L.append('(')
-        
-        elif i == ')':
             lvl = 1
             T = []
-            while lvl > 0:
-                tmp = L.pop()
-                T = [tmp] + T
-                lvl += tmp == ')'
-                lvl -= tmp == '('
-            L.append(compose(T[1:]))
+
+            idx += 1
+            while idx < len(tok) and lvl > 0:
+                t = tok[idx]
+                T.append(t)
+                lvl += t == '('
+                lvl -= t == ')'
+                idx += 1
+
+            L.append(compose(parse(T[:-1])))
+            idx -= 1
 
         elif i == '#':
-            if len(L) >= 2 and '(' not in L[-2:]:
-                L.append(p_rec([L.pop(-2), L.pop()]))
+            t = parse(tok[idx+1:])
+            if len(t) == 2:
+                L.append(p_rec(t))
             else:
-                L.append(mu([L.pop()]))
-        x += 1
+                L.append(mu(t))
+            break
+        idx += 1
 
     return L
 
