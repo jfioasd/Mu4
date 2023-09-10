@@ -9,6 +9,8 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 
 `0` `1` `2` `3` `;` `(` `)` `#`
 
+(I think maybe `!` looks better than `#` here.)
+
 # Grammar
 ## Functions
 * `10` Constant function. Takes any number of arguments, and returns `4` (decoded from base-4).
