@@ -16,6 +16,7 @@ def compose(fns):
 def p_rec(fns):
     g, h = fns
     def x(args):
+        print(args)
         t = g(args[1:])
         for i in range(args[0]):
             t = h([i, t] + args[1:])
