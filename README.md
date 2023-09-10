@@ -30,8 +30,6 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
   * Takes any number of arguments `a1 a2 .. an`.
   * Return the smallest natural number `x` where `f([x, a1, a2, .. an]) = 0`.
 
-P.S. The current implementation for `#` is postfix because I'm figuring out how to do it properly.
-
 ## Examples
 ### Multiplication
 ```
