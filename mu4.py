@@ -1,7 +1,14 @@
 import sys
 
-def proj(x):
-    return lambda a: a[x]
+def proj(n):
+    def x(a):
+        try:
+            return a[n]
+        except IndexError:
+            print("In: ;"+str(n))
+            print(f"';': Tried to get index {n} of a size-{len(a)} list", file=sys.stderr)
+            exit(0)
+    return x
 
 def const(x):
     return lambda a: x
@@ -88,10 +95,14 @@ def parse(tok):
 
         elif i == '!':
             t = parse(tok[idx+1:])
-            if len(t) == 2:
+            if len(t) == 1:
+                L.append(mu(t))
+            elif len(t) == 2:
                 L.append(p_rec(t))
             else:
-                L.append(mu(t))
+                print("In: "+''.join(map(str, tok[idx:])), file=sys.stderr)
+                print("'!': expected 1 or 2 arguments, got "+str(len(t)), file=sys.stderr)
+                exit(0)
             break
         idx += 1
 
@@ -100,4 +111,8 @@ def parse(tok):
 if __name__ == '__main__':
     f = open(sys.argv[1]).read()
     x = list(map(int, input().split()))
+    L = parse(lex(f))
+    if len(L) != 1:
+        print("More than 1 top-level function", file=sys.stderr)
+        exit(0)
     print(parse(lex(f))[0](x))
