@@ -1,12 +1,15 @@
 import sys
 
+def perror(s):
+    print(s, file=sys.stderr)
+
 def proj(n):
     def x(a):
         try:
             return a[n]
         except IndexError:
-            print("In: ;"+str(n))
-            print(f"';': Tried to get index {n} of a size-{len(a)} list", file=sys.stderr)
+            perror("In: ;"+str(n))
+            perror(f"';': Tried to get index {n} of a size-{len(a)} list")
             exit(0)
     return x
 
@@ -14,7 +17,13 @@ def const(x):
     return lambda a: x
 
 def succ():
-    return lambda a: a[0] + 1
+    def x(a):
+        try:
+            return a[0] + 1
+        except IndexError:
+            perror("';': No arguments supplied")
+            exit(0)
+    return x
 
 def compose(fns):
     return lambda a: \
@@ -26,7 +35,6 @@ def p_rec(fns):
         t = g(args[1:])
         for i in range(args[0]):
             t = h([i, t] + args[1:])
-
         return t
     return x
 
@@ -90,6 +98,11 @@ def parse(tok):
                 lvl -= t == ')'
                 idx += 1
 
+            if lvl > 0:
+                perror("In: ("+''.join(map(str, T)))
+                perror("'(' is unbalanced")
+                exit(0)
+
             L.append(compose(parse(T[:-1])))
             idx -= 1
 
@@ -100,8 +113,8 @@ def parse(tok):
             elif len(t) == 2:
                 L.append(p_rec(t))
             else:
-                print("In: "+''.join(map(str, tok[idx:])), file=sys.stderr)
-                print("'!': expected 1 or 2 arguments, got "+str(len(t)), file=sys.stderr)
+                perror("In: "+''.join(map(str, tok[idx:])))
+                perror("'!': expected 1 or 2 arguments, got "+str(len(t)))
                 exit(0)
             break
         idx += 1
@@ -113,6 +126,6 @@ if __name__ == '__main__':
     x = list(map(int, input().split()))
     L = parse(lex(f))
     if len(L) != 1:
-        print("Error: More than 1 top-level function", file=sys.stderr)
+        perror("Error: More than 1 top-level function")
         exit(0)
     print(parse(lex(f))[0](x))
