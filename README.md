@@ -14,8 +14,8 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 Here, `N` means a number encoded in base-4.
 
 * `10` Constant function. Takes any number of arguments, and returns `4` (decoded from base-4).
-* `N;` Projection. Takes any number of arguments, and returns the `N`th argument.
-  * (Numbering starts at 1)
+* `;N` Projection. Takes any number of arguments, and returns the `N`th argument.
+  * (Numbering starts at `0`)
 * `;` Successor. Takes any number of arguments, and returns the successor of its first argument.
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
@@ -33,18 +33,18 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
 ## Examples
 ### Multiplication
 ```
-!0(2;3;!1;(2;;))
+!0(;1;2!;0(;1;))
 ```
 
 Basically:
-`p_rec(0, compose(proj(2), proj(3), p_rec(proj(1), compose(proj(2), succ))))`
+`p_rec(0, compose(proj(1), proj(2), p_rec(proj(0), compose(proj(1), succ))))`
 
 ### Predecessor
 ```
-!(0)1;
+!(0);0
 ```
 
 ### Minimization test
 ```
-!(2;!(0)1;)
+!(;1!(0);0)
 ```
