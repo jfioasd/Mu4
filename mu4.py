@@ -1,7 +1,7 @@
 import sys
 
 def proj(x):
-    return lambda a: a[x-1]
+    return lambda a: a[x]
 
 def const(x):
     return lambda a: x
@@ -61,14 +61,15 @@ def parse(tok):
     while idx < len(tok):
         i = tok[idx]
         if isinstance(i, int):
-            if idx+1 < len(tok) and tok[idx+1] == ';':
-                L.append(proj(i))
-                idx += 1
-            else:
-                L.append(const(i))
+            L.append(const(i))
 
         elif i == ';':
-            L.append(succ())
+            if idx+1 < len(tok) and \
+                    isinstance(tok[idx+1], int):
+                L.append(proj(tok[idx+1]))
+                idx += 1
+            else:
+                L.append(succ())
 
         elif i == '(':
             lvl = 1
@@ -98,5 +99,5 @@ def parse(tok):
 
 if __name__ == '__main__':
     f = open(sys.argv[1]).read()
-    x = eval(input())
+    x = list(map(int, input().split()))
     print(parse(lex(f))[0](x))
