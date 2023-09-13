@@ -26,8 +26,14 @@ def succ():
     return x
 
 def compose(fns):
-    return lambda a: \
-        fns[-1]([h(a) for h in fns[:-1]])
+    def x(a):
+        try:
+            return fns[-1]([h(a) for h in fns[:-1]])
+        except IndexError:
+            perror("In: ()")
+            perror("No functions supplied for composition")
+            exit(0)
+    return x
 
 def p_rec(fns):
     g, h = fns
