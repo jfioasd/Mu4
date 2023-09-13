@@ -113,6 +113,6 @@ if __name__ == '__main__':
     x = list(map(int, input().split()))
     L = parse(lex(f))
     if len(L) != 1:
-        print("More than 1 top-level function", file=sys.stderr)
+        print("Error: More than 1 top-level function", file=sys.stderr)
         exit(0)
     print(parse(lex(f))[0](x))
