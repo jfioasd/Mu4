@@ -21,14 +21,14 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 Here, `h1`, `g`, `f1`, etc. all represent functions.
 
 `a1, a2, .. an` represents an arbitrary number of the same type of argument (i.e. numbers/functions). This list can be empty.
-* `( h1 h2 .. hn g )` Composition. Returns a function which:
+* `( h1 h2 .. hn g )` Composition. Defines a function which:
   * Takes any number of arguments `[a1, a2, .. an]`.
   * Returns `g(h1([a1, a2, ... an]), h2([a1, a2, ... an]), ... hn([a1, a2, ... an]))`. 
-* `! g h` Primitive recursion. Returns a function which:
+* `! g h` Primitive recursion. Defines a function which:
   * Takes any number of arguments `[n, a1, a2, .. an]`.
     * If `n == 0`: Returns `g([a1, a2, .. an])`.
     * Else. Returns `h([n-1, ! g h([n-1, a1, ... an]), a1, .. an])`.
-* `! f` Minimization. Returns a function which:
+* `! f` Minimization. Defines a function which:
   * Takes any number of arguments `[a1, a2, .. an]`.
   * Return the smallest natural number `x` where `f([x, a1, a2, .. an]) = 0`.
 
