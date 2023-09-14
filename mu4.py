@@ -17,13 +17,7 @@ def const(x):
     return lambda a: x
 
 def succ():
-    def x(a):
-        try:
-            return a[0] + 1
-        except IndexError:
-            perror("';': No arguments supplied")
-            exit(0)
-    return x
+    return lambda a: a[0] + 1
 
 def compose(fns):
     def x(a):
