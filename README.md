@@ -12,12 +12,10 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 
 # Grammar
 ## Functions
-Here, `N` means a number encoded in base-4.
-
 * `10` Constant function. Takes any number of arguments, and returns `4` (decoded from base-4).
-* `;N` Projection. Takes any number of arguments, and returns the `N`th argument.
+* `;N` Projection. Takes any number of arguments, and returns the `N`th argument. (base-4 decoded)
   * (Numbering starts at `0`)
-* `;` Successor. Takes any number of arguments, and returns the successor of its first argument.
+* `;` Successor. Takes at least 1 argument, and returns the successor of its first argument.
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
 * `( h1 h2 .. hn g )` Composition. Returns a function:
