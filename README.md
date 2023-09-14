@@ -20,7 +20,7 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
 
-`a1, a2, .. an` represents an arbitrary number of this type of argument (numbers or functions). This list can be empty.
+`a1, a2, .. an` represents an arbitrary number of the same type of argument (i.e. numbers/functions). This list can be empty.
 * `( h1 h2 .. hn g )` Composition. Returns a function which:
   * Takes any number of arguments `[a1, a2, .. an]`.
   * Returns `g(h1([a1, a2, ... an]), h2([a1, a2, ... an]), ... hn([a1, a2, ... an]))`. 
