@@ -2,9 +2,9 @@
 A esolang based on [μ6](https://github.com/bforte/mu6/)
 
 ## Execution
-The program takes a list from STDIN as the argument(s) to the function.
+The program takes a list of integers from STDIN (space-separated), as the arguments to the function.
 
-Then, the program is parsed into a function. The result of calling the function is printed.
+Then, the program is parsed into a function. The result of calling the function with the argument(s) is printed.
 
 Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 
