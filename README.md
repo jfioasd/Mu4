@@ -27,7 +27,7 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 ## Functions
 * `N` Constant function. Takes any number of arguments, and returns `N`, decoded from base-4.
 * `;N` Projection. Takes any number of arguments, and returns the `N`th argument. (base-4 decoded)
-  * (Numbering starts at `0`)
+  * Numbering starts at `0`. (Feels kind of unnatural to program in though; `1` is a better choice)
 * `;` Successor. Takes 1 argument. Returns the successor of its argument.
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
@@ -45,6 +45,14 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
   * Return the smallest natural number `x` where `f([x, a1, a2, .. an]) = 0`.
 
 ## Examples
+### Addition
+```
+!;0(;1;)
+```
+#### Double
+```
+(;0;0!;0(;1;))
+```
 ### Multiplication
 ```
 !0(;1;2!;0(;1;))
@@ -54,7 +62,10 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
 ```
 !0;0
 ```
-
+### Monus (reversed args)
+```
+!;0(;1!0;0)
+```
 ### Minimization test
 ```
 !(;1!0;0)
