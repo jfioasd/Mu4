@@ -127,7 +127,26 @@ def parse(tok):
     return L
 
 if __name__ == '__main__':
-    f = open(sys.argv[1]).read()
+    f = open(sys.argv[-1], encoding='utf-8').read()
+
+    if '-t' in sys.argv:
+        v = 0
+        for i in f:
+            v = v * 8 + '0123;()!'.index(i)
+        out = ""
+        while v > 0:
+            out = chr(v % 256) + out
+            v //= 256
+        print(out, end='')
+        exit(0)
+
+    if '-b' in sys.argv:
+        v = 0
+        for i in map(ord,f):
+            v = v * 256 + i
+        x = str.maketrans('4567',';()!')
+        f = oct(v)[2:].translate(x)
+
     x = list(map(int, input().split()))
     L = parse(lex(f))
     if len(L) != 1:
