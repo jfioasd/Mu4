@@ -17,7 +17,12 @@ def const(x):
     return lambda a: x
 
 def succ():
-    return lambda a: a[0] + 1
+    def x(a):
+        if len(a) != 1:
+            perror(f"';': Expected 1 argument, got {len(a)}")
+            exit(0)
+        return a[0] + 1
+    return x
 
 def compose(fns):
     def x(a):
