@@ -16,7 +16,6 @@ Unlike μ6, μ4 encodes the characters in octets. All allowed characters:
 * `;N` Projection. Takes any number of arguments, and returns the `N`th argument. (base-4 decoded)
   * (Numbering starts at `0`)
 * `;` Successor. Takes 1 argument. Returns the successor of its argument.
-  * (Currently it works for multiple arguments, but I'll raise an error for that when I come back to it.)
 ## Operators
 Here, `h1`, `g`, `f1`, etc. all represent functions.
 
