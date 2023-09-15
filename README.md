@@ -1,6 +1,19 @@
 # μ4
 A esolang based on [μ6](https://github.com/bforte/mu6/)
 
+## Flags
+By default, μ4 executes the ASCII version of the code. E.g.
+```
+python3 mu4.py test.m4
+```
+
+Executes the contents of `test.m4` as an ASCII file.
+
+Two flags are supported:
+* `-t`: Converts the given file to the octal representation of the program.
+  * (Note: You might need to use `>` to write its output to a file.)
+* `-b`: Reads the given file as an octal representation.
+
 ## Execution
 The program takes a list of integers from STDIN (space-separated), as the arguments to the function.
 
