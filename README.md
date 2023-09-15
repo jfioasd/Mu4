@@ -10,9 +10,9 @@ python3 mu4.py test.m4
 Executes the contents of `test.m4` as an ASCII file.
 
 Two flags are supported:
-* `-t`: Converts the given file to the octal representation of the program.
+* `-t`: Converts the given file to the octal encoding of the program.
   * (Note: You might need to use `>` to write its output to a file.)
-* `-b`: Reads the given file as an octal representation.
+* `-b`: Reads the program from an octal encoding.
 
 ## Execution
 The program takes a list of integers from STDIN (space-separated), as the arguments to the function.
