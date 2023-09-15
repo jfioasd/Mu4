@@ -50,9 +50,6 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
 !0(;1;2!;0(;1;))
 ```
 
-Basically:
-`p_rec(0, compose(proj(1), proj(2), p_rec(proj(0), compose(proj(1), succ))))`
-
 ### Predecessor
 ```
 !0;0
