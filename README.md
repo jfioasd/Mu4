@@ -53,11 +53,8 @@ Multiplication: `!0(;2;3!;1(;2;))`
 
 Predecessor: `!0;1`
 
-Monus (reversed args):
-```
-!;0(;1!0;0)
-```
-### Minimization test
-```
-!(;1!0;0)
-```
+Monus (reversed args): `!;1(;2!0;1)`
+
+---
+
+Minimization test: `!(;1!0;0)`
