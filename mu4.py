@@ -6,7 +6,7 @@ def perror(s):
 def proj(n):
     def x(a):
         try:
-            return a[n]
+            return a[n-1]
         except IndexError:
             perror("In: ;"+str(n))
             perror(f"';': Tried to get index {n} of a size-{len(a)} list")
