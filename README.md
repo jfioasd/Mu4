@@ -45,24 +45,15 @@ Here, `h1`, `g`, `f1`, etc. all represent functions.
   * Return the smallest natural number `x` where `f([x, a1, a2, .. an]) = 0`.
 
 ## Examples
-### Addition
-```
-!;0(;1;)
-```
-#### Double
-```
-(;0;0!;0(;1;))
-```
-### Multiplication
-```
-!0(;1;2!;0(;1;))
-```
+Addition: `!;1(;2;)`
 
-### Predecessor
-```
-!0;0
-```
-### Monus (reversed args)
+Double: `(;1;1!;1(;2;))`
+
+Multiplication: `!0(;2;3!;1(;2;))`
+
+Predecessor: `!0;1`
+
+Monus (reversed args):
 ```
 !;0(;1!0;0)
 ```
